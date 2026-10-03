@@ -17,9 +17,10 @@ for i in range(0,len(shuffle)):
 pairs=list(dict.items(encryption_key))
 
 for i in range(0,len(shuffle)):
-    for j in range(0,len(shuffle)):
+    for j in range(0,len(pairs)):
         if alphabet[i]==pairs[j][1]:
             decryption_key[alphabet[i]]=pairs[j][0]
+            del pairs[j]
             break
 
 #WRITING THE KEYS INTO THE RESPECTIVE FILES=================================================================================
