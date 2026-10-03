@@ -1,19 +1,20 @@
 import pickle
 import sys
-f=open(f"{sys.argv[1]}",'r')
-w=open("ciphertext.txt",'w')
+p=open(f"{sys.argv[1]}",'r')
+c=open(f"{sys.argv[1]}_ciphertext.txt",'w')
 k=open("encryption_key.dat",'rb')
-enkey=pickle.load(k)
-data=f.read()
+encryption_key=pickle.load(k)
+data=p.read()
 ciphertext=''
 
 for i in data:
     if i.isalpha():
-        ciphertext+=enkey[i.upper()]
+        ciphertext+=encryption_key[i.upper()]
     else:
         ciphertext+=i
 
-w.write(ciphertext)
-w.flush()
-f.close()
+c.write(ciphertext)
+c.flush()
+c.close()
+p.close()
 k.close()
